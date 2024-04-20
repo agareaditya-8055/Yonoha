@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useNavItems } from "../../../utils/useNavItems";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+
+// NavItems component for rendering navigation items
 
 const NavItems = () => {
+  // State for handling the open/close state of the navigation menu
   const [open, setOpen] = useState(false);
 
+  // Hooks for handling the navigation items
   const navigate = useNavigate();
+
+  // Custom hook for getting navigation items and related handlers
   const {
     onlineStatus,
     cart,
@@ -18,6 +22,7 @@ const NavItems = () => {
     handleDarkModeToggle,
   } = useNavItems(navigate);
 
+  // Navigation items array
   const navItems = [
     {
       label: `Online Status : ${onlineStatus ? "✅" : "❎"}`,
@@ -40,13 +45,15 @@ const NavItems = () => {
 
   return (
     <div className="navItems_container ">
-      {/* <ToastContainer /> */}
+      {/* Button for opening/closing the navigation menu  */}
       <div
         className="text-3xl absolute right-8 top-6 lg:hidden cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         {open ? <span>&#10005;</span> : <span>&#9776;</span>}
       </div>
+
+      {/* Navigation items list */}
       <ul
         className={`lg:flex lg:items-center  pl-7 lg:pl-0 lg:mt-0 lg:pb-0 pb-8 absolute lg:static lg:z-auto left-0 w-full lg:w-auto z-[1] transition-all duration-500 ease-in ${
           open ? "top-20" : "top-[-490px]"
@@ -58,6 +65,7 @@ const NavItems = () => {
         }
         `}
       >
+        {/* Mapping over navItems to render each navigation item */}
         {navItems.map((item, index) => (
           <li
             key={index}
@@ -69,6 +77,7 @@ const NavItems = () => {
           </li>
         ))}
 
+        {/* Cart icon with the number of items */}
         <li
           className=" my-5 lg:mr-2 lg:my-0 base:flex base:items-center font-semibold  relative"
           onClick={() => setOpen(false)}
@@ -82,6 +91,8 @@ const NavItems = () => {
             </div>
           </Link>
         </li>
+
+        {/* Sign In/Sign Out button */}
         {name ? (
           <button
             className="login_btn my-5 lg:my-0 px-4 py-1 bg-green-200 text-black rounded-lg font-bold"
@@ -97,6 +108,8 @@ const NavItems = () => {
             Sign In
           </button>
         )}
+
+        {/* Dark/Light Mode Toggle button */}
         <button
           className={`px-4 font-bold text-lg my-5 lg:my-0  rounded-lg ml-2 ${
             isDarkMode ? "border-2 border-white" : " border-2 border-slate-900"

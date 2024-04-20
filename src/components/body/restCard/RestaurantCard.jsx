@@ -1,18 +1,10 @@
 import React from "react";
-
 import { useSelector } from "react-redux";
 import { CDN_URL } from "../../../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
-  const {
-    costForTwo,
-    cuisines,
-    name,
-    avgRating,
-    sla,
-    cloudinaryImageId,
-    aggregatedDiscountInfoV3,
-  } = resData?.info;
+  const { costForTwo, cuisines, name, avgRating, sla, cloudinaryImageId } =
+    resData?.info;
   const isDarkMode = useSelector((state) => state.theme.darkMode);
 
   const bgColor = isDarkMode

@@ -26,15 +26,8 @@ const RestaurantMenu = () => {
     return <Shimmer />;
   }
 
-  const {
-    name,
-    cuisines,
-    costForTwoMessage,
-    totalRatingsString,
-    avgRating,
-    locality,
-    sla,
-  } = menuData?.card?.card?.info;
+  const { name, cuisines, totalRatingsString, avgRating, locality, sla } =
+    menuData?.card?.card?.info;
 
   const categoriesData = resMenuData?.cards.find(
     (card) => card.groupedCard !== undefined

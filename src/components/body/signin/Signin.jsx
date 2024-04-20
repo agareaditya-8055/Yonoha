@@ -1,8 +1,11 @@
+// Importing necessary hooks and components
 import { useSigninForm } from "../../../utils/useSigninForm";
 import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 
+// Signin component
 const Signin = () => {
+  // Destructuring properties from the useSigninForm custom hook
   const {
     formState,
     handleChange,
@@ -14,16 +17,20 @@ const Signin = () => {
     isLoading,
   } = useSigninForm();
 
+  // Component return
   return (
+    // Container div
     <div
       className={`flex flex-col justify-center  items-center h-screen ${
         isDarkMode && "bg-htmlColor"
       }`}
     >
+      {/* Form for signing in */}
       <form
         onSubmit={handleSubmit}
         className={`w-full max-w-md ${cardColor} shadow-md rounded px-8 pt-6 pb-8 mb-4`}
       >
+        {/* Email input field */}
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -42,6 +49,7 @@ const Signin = () => {
             required
           />
         </div>
+        {/* Password input field */}
         <div className="mb-6">
           <label
             htmlFor="password"
@@ -61,7 +69,9 @@ const Signin = () => {
           />
         </div>
 
+        {/* Submit button and signup link */}
         <div className="flex items-center justify-between">
+          {/* Show loader when loading, else show the Sign In button */}
           {isLoading ? (
             <InfinitySpin />
           ) : (
@@ -73,6 +83,7 @@ const Signin = () => {
             </button>
           )}
 
+          {/* Link to signup page */}
           <span className={`text-gray-600 text-sm ${textColor}`}>
             Don't have an account?{" "}
             <Link to="/signup" className="text-blue-500 hover:text-blue-800">
@@ -85,4 +96,5 @@ const Signin = () => {
   );
 };
 
+// Exporting the Signin component
 export default Signin;

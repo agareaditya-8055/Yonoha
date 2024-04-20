@@ -3,10 +3,15 @@ import { useSignupForm } from "../../../utils/useSignupForm";
 import { useSelector } from "react-redux";
 import { InfinitySpin } from "react-loader-spinner";
 
+// Signup component for rendering the signup form
 const Signup = () => {
+  // Using custom hook to get form state and related functions
   const { formState, handleChange, handleSubmit } = useSignupForm();
+
+  // Using Redux useSelector hook to get the darkMode state from the Redux store
   const isDarkMode = useSelector((state) => state.theme.darkMode);
 
+  // Dynamic classes based on the darkMode state
   const cardColor = isDarkMode ? "bg-bgCard" : "bg-white";
   const textColor = isDarkMode ? "text-white" : "text-gray-700";
   const inputColor = isDarkMode
@@ -14,15 +19,18 @@ const Signup = () => {
     : "bg-white text-gray-700";
 
   return (
+    // Container for the signup form
     <div
       className={`flex flex-col justify-center items-center h-screen ${
         isDarkMode && "bg-htmlColor"
       }`}
     >
+      // Signup form
       <form
         onSubmit={handleSubmit}
         className={`w-full max-w-md ${cardColor} shadow-md rounded px-8 pt-6 pb-8 mb-4`}
       >
+        // Name input field
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -41,6 +49,7 @@ const Signup = () => {
             required
           />
         </div>
+        // Email input field
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -59,6 +68,7 @@ const Signup = () => {
             required
           />
         </div>
+        // Password input field
         <div className="mb-6">
           <label
             htmlFor="password"
@@ -77,6 +87,7 @@ const Signup = () => {
             required
           />
         </div>
+        // Submit button and link to the signin page
         <div className="flex items-center justify-between">
           {isLoading ? (
             <InfinitySpin />

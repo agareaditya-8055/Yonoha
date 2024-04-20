@@ -8,6 +8,8 @@ export const useItemList = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const userId = useSelector((state) => state?.auth?.userData?.$id);
   const dispatch = useDispatch();
+
+  // Function to handle add click
   const handleAddClick = async (item) => {
     try {
       const {
@@ -18,11 +20,16 @@ export const useItemList = () => {
         description,
         imageId,
       } = item;
+
+      // Construct id
       const id = `${userId}${cartItemId}`;
+      // Calculate prices
       const priceString = (price / 100).toString();
       const defaultpriceString = (defaultPrice / 100).toString();
 
+      // Check if user is logged in
       if (userId) {
+        // Create a new document for the cart item
         const createDocs = await docService.createCartItems({
           id,
           name,
@@ -33,6 +40,7 @@ export const useItemList = () => {
           userId,
         });
 
+        // If document creation is successful, add the item to the cart
         if (createDocs) {
           dispatch(addItems(createDocs));
           toast.success("Item has been added successfully !");
@@ -46,10 +54,13 @@ export const useItemList = () => {
     }
   };
 
+  // Function to handle delete click
   const handleDeleteClick = async (itemId) => {
     try {
+      // Delete the cart item document
       const deleteItem = await docService.deleteCartItems(itemId);
 
+      // If document deletion is successful, remove the item from the cart
       if (deleteItem) {
         dispatch(removeItems(itemId));
         toast.error("Item has been removed successfully !");
@@ -59,6 +70,7 @@ export const useItemList = () => {
     }
   };
 
+  // Return values from the hook
   return {
     handleAddClick,
     handleDeleteClick,
