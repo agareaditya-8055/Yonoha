@@ -53,4 +53,4 @@ Thumbs.db
 
 # Netlify 404 Error file
 _redirects
-Yonoha/.env
+.env/
