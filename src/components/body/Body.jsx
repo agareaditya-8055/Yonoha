@@ -47,11 +47,11 @@ const Body = () => {
       <div
         className={`${cardColor} filter flex flex-col overflow-x-hidden  md:justify-between md:flex md:items-center rounded-lg shadow-md p-4`}
       >
-        // Search input and filter button
+        {/* Search input and filter button */}
         <div
           className={`search flex flex-col md:flex md:flex-row overflow-x-hidden justify-center md:gap-28 items-center px-4 py-1 w-full ${textColor}`}
         >
-          // Search input
+          {/* Search input */}
           <div className="relative w-[260px] md:w-72 min-w-[275.5px] overflow-x-hidden ">
             <input
               type="text"
@@ -75,7 +75,7 @@ const Body = () => {
                 }
               }}
             />
-            // Search icon
+            {/* Search icon */}
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <i
                 className="fa-solid fa-magnifying-glass"
@@ -83,7 +83,7 @@ const Body = () => {
               ></i>
             </div>
           </div>
-          // Filter button for top rated restaurants
+          {/* Filter button for top rated restaurants */}
           <button
             className={`filter_btn  md:mr-0 mt-3 md:mt-0 w-[275.5px] md:w-72 py-1 ${buttonColor} hover:bg-green-100 rounded-lg`}
             onClick={() => {
@@ -97,7 +97,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      // Restaurant list section
+      {/* Restaurant list section */}
       <div className="flex items-center  justify-center">
         <div className="w-[calc(100%-2rem)] md:w-[calc(100%-4rem)]  xl:w-[calc(100%-14rem)] 2xl:w-[calc(100%-25rem)]">
           <h2
@@ -107,8 +107,8 @@ const Body = () => {
           >
             {title}
           </h2>
-          // If the filtered list is empty, display a message indicating no
-          results found
+          {/* If the filtered list is empty, display a message indicating no
+          results found */}
           {filteredList.length === 0 ? (
             <div className="lg:flex lg:justify-center lg:items-center m-32">
               <img
@@ -124,9 +124,9 @@ const Body = () => {
                 {filteredList?.map((data) => (
                   // Link to the restaurant details page
                   <Link key={data.info.id} to={"/restaurants/" + data.info.id}>
-                    // If the restaurant have any offers, display the
+                    {/* If the restaurant have any offers, display the
                     RestaurantCardLabel component, otherwise display the
-                    RestaurantCard component
+                    RestaurantCard component */}
                     {data.info.isOpen ? (
                       <RestaurantCardLabel resData={data} />
                     ) : (

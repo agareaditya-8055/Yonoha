@@ -6,6 +6,7 @@ import { login as authLogin } from "../store/slices/authSlice";
 import { toast } from "react-toastify";
 
 export const useSignupForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
@@ -24,6 +25,7 @@ export const useSignupForm = () => {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
+      setIsLoading(true);
       try {
         const userData = await authService.createAccount(formState);
         if (userData) {
@@ -36,10 +38,12 @@ export const useSignupForm = () => {
         }
       } catch (error) {
         toast.error(error.message);
+      } finally {
+        setIsLoading(false);
       }
     },
     [dispatch, formState, navigate]
   );
 
-  return { formState, handleChange, handleSubmit };
+  return { formState, handleChange, handleSubmit, isLoading };
 };

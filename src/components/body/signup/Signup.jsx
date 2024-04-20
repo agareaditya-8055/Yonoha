@@ -6,7 +6,7 @@ import { InfinitySpin } from "react-loader-spinner";
 // Signup component for rendering the signup form
 const Signup = () => {
   // Using custom hook to get form state and related functions
-  const { formState, handleChange, handleSubmit } = useSignupForm();
+  const { formState, handleChange, handleSubmit, isLoading } = useSignupForm();
 
   // Using Redux useSelector hook to get the darkMode state from the Redux store
   const isDarkMode = useSelector((state) => state.theme.darkMode);
@@ -25,12 +25,12 @@ const Signup = () => {
         isDarkMode && "bg-htmlColor"
       }`}
     >
-      // Signup form
+      {/* Signup form */}
       <form
         onSubmit={handleSubmit}
         className={`w-full max-w-md ${cardColor} shadow-md rounded px-8 pt-6 pb-8 mb-4`}
       >
-        // Name input field
+        {/* Name input field */}
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -49,7 +49,7 @@ const Signup = () => {
             required
           />
         </div>
-        // Email input field
+        {/* Email input field */}
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -68,7 +68,7 @@ const Signup = () => {
             required
           />
         </div>
-        // Password input field
+        {/* Password input field */}
         <div className="mb-6">
           <label
             htmlFor="password"
@@ -87,7 +87,7 @@ const Signup = () => {
             required
           />
         </div>
-        // Submit button and link to the signin page
+        {/* Submit button and link to the signin page */}
         <div className="flex items-center justify-between">
           {isLoading ? (
             <InfinitySpin />

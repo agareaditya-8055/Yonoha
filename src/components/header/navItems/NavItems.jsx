@@ -55,13 +55,13 @@ const NavItems = () => {
 
       {/* Navigation items list */}
       <ul
-        className={`lg:flex lg:items-center  pl-7 lg:pl-0 lg:mt-0 lg:pb-0 pb-8 absolute lg:static lg:z-auto left-0 w-full lg:w-auto z-[1] transition-all duration-500 ease-in ${
+        className={`lg:flex lg:items-center  pl-7 lg:pl-0 lg:mt-0 lg:pb-0 pb-8 absolute lg:static lg:z-auto left-0 w-full lg:w-auto z-[1] lg:bg-transparent transition-all duration-500 ease-in ${
           open ? "top-20" : "top-[-490px]"
         }  
         ${
           isDarkMode
-            ? "text-textColor  transition duration-500"
-            : "text-bgCard transition duration-500"
+            ? "text-textColor bg-bgCard  transition duration-500"
+            : "text-bgCard bg-pink-50 transition duration-500"
         }
         `}
       >
