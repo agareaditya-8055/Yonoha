@@ -7,13 +7,9 @@ import useOnlineStatus from "../../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 import noresult from "../../logos/no-results.png";
 import OfflinePage from "../OfflinePage";
-
-// import { ToastContainer, toast } from "react-toastify";
 import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 
 const Body = () => {
-  const notify = () => toast.warning("Wow so easy!");
   const [searchText, setSearchText] = useState("");
   const RestaurantCardLabel = isOpenLable(RestaurantCard);
   const isDarkMode = useSelector((state) => state.theme.darkMode);
@@ -21,7 +17,6 @@ const Body = () => {
     resDataList,
     filteredList,
     setFilteredList,
-    setResDataList,
     bgColor,
     cardColor,
     textColor,
@@ -33,9 +28,6 @@ const Body = () => {
 
   if (onlineStatus === false) return <OfflinePage />;
 
-  // if (1+1 === 2 ) {
-  //   return <Shimmer />;
-  // }
   if (resDataList?.length === 0) {
     return <Shimmer />;
   }
@@ -126,59 +118,6 @@ const Body = () => {
         </div>
       </div>
     </div>
-
-    // <div className={`mt-20 h-screen py-4 ${bgColor}`}>
-    //   <div
-    //     className={`${cardColor} filter flex flex-col overflow-x-hidden  md:justify-between md:flex md:items-center rounded-lg shadow-md p-4`}
-    //   >
-    //     <div
-    //       className={`search flex flex-col md:flex md:flex-row md:justify-between items-center px-4 py-1 w-full  ${textColor}`}
-    //     >
-    //       <div className="relative w-[260px] md:w-72 min-w-[275.5px] overflow-x-hidden ">
-    //         <input
-    //           type="text"
-    //           placeholder="Search for restaurants, cuisines"
-    //           className={`search_input search-m border border-solid border-gray-300  rounded-xl p-2 pl-[40px] w-full text-[16px]  ${inputColor}`}
-    //           value={searchText}
-    //           onChange={(e) => {
-    //             const searchTextValue = e.target.value.toLowerCase();
-    //             setSearchText(searchTextValue);
-
-    //             if (searchTextValue === "") setFilteredList(resDataList);
-    //             else {
-    //               const filteredRestaurantList = resDataList?.filter(
-    //                 (res) =>
-    //                   res.info.name.toLowerCase().includes(searchTextValue) ||
-    //                   res.info.cuisines.some((cuisine) =>
-    //                     cuisine.toLowerCase().includes(searchTextValue)
-    //                   )
-    //               );
-    //               setFilteredList(filteredRestaurantList);
-    //             }
-    //           }}
-    //         />
-    //         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-    //           <i
-    //             className="fa-solid fa-magnifying-glass"
-    //             style={{ color: "#939393" }}
-    //           ></i>
-    //         </div>
-    //       </div>
-
-    //       <button
-    //         className={`filter_btn mr-2 md:mr-0 mt-3 md:mt-0 px-4 py-1 ${buttonColor} hover:bg-green-100 rounded-lg`}
-    //         onClick={() => {
-    //           let newResdataList = resDataList.filter((data) => {
-    //             return data?.info?.avgRating > 4.3;
-    //           });
-    //           setFilteredList(newResdataList);
-    //         }}
-    //       >
-    //         Top Rated Restaurants
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

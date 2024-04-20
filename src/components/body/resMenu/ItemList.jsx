@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { CDN_URL } from "../../../utils/constants";
 import { useItemList } from "../../../utils/useItemList";
 import { useSelector } from "react-redux";
@@ -7,28 +6,21 @@ import { InfinitySpin } from "react-loader-spinner";
 
 const ItemList = ({ items, buttonContent, actionType }) => {
   const [loadingItems, setLoadingItems] = useState({});
-  const user = useSelector((state) => state.auth.status);
-  const {
-    handleAddClick,
-    handleDeleteClick,
-    cartItems,
-    isDarkMode,
-    userId,
-    isLoading,
-  } = useItemList();
+  const { handleAddClick, handleDeleteClick, cartItems, isDarkMode, userId } =
+    useItemList();
 
   // In your ItemList component
 
   const handleClick = (item) => {
-    setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: true })); // Set loading state for this item
+    setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: true }));
 
     if (actionType === "add") {
       handleAddClick(item).finally(() => {
-        setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: false })); // Reset loading state for this item
+        setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: false }));
       });
     } else if (actionType === "delete") {
       handleDeleteClick(item?.$id).finally(() => {
-        setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: false })); // Reset loading state for this item
+        setLoadingItems((prev) => ({ ...prev, [item.$id || item.id]: false }));
       });
     }
   };
@@ -105,7 +97,6 @@ const ItemList = ({ items, buttonContent, actionType }) => {
           </div>
         );
       })}
-      {/* } */}
     </div>
   );
 };

@@ -26,25 +26,6 @@ const RestaurantCard = ({ resData }) => {
     : "shadow-md transition duration-500";
 
   return (
-    // <div
-    //   className={`res_card m-2 p-2 w-[232px] h-[400px] rounded-lg overflow-hidden ${bgColor} ${textColor} ${shadowColor} transition-all duration-500`}
-    // >
-    //   <img
-    //     src={CDN_URL + cloudinaryImageId}
-    //     alt="dishImage"
-    //     className="res_img w-full h-[182px] rounded-t-lg object-cover"
-    //   />
-    //   <h3 className="font-bold py-4 text-lg">{name}</h3>
-    //   <h4 className="font-semibold pb-1">{cuisines.slice(0, 3).join(", ")}</h4>
-    //   <span className="flex flex-row items-center w-1/5 bg-green-900 text-white text-sm px-1 rounded-md">
-    //     <i className="fa-solid fa-star" style={{ color: "#ffffff" }} />
-    //     <h4 className="font-semibold ">{avgRating}</h4>
-    //   </span>
-
-    //   <h4 className="font-semibold pb-2">{costForTwo}</h4>
-    //   <h4 className="font-semibold pb-2">{sla.slaString}</h4>
-    // </div>
-
     <div
       className={`Food-item w-[250px] h-[265px] xs:w-[300px] xs:h[315px] mb-[20px] hover:rounded-xl sm:w-[280px] sm:h-[295px] md:w-[250px] md:h-[265px] lg:w-[320px] lg:h-[335px]  xl:w-[350px] xl:h-[365px] ${
         isDarkMode
