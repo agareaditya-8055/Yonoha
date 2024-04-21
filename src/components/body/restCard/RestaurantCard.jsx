@@ -21,8 +21,8 @@ const RestaurantCard = ({ resData }) => {
     <div
       className={`Food-item w-[250px] h-[265px] xs:w-[300px] xs:h[315px] mb-[20px] hover:rounded-xl sm:w-[280px] sm:h-[295px] md:w-[250px] md:h-[265px] lg:w-[320px] lg:h-[335px]  xl:w-[350px] xl:h-[365px] ${
         isDarkMode
-          ? "text-textColor hover:bg-bgCard"
-          : "hover:border hover:border-white  hover:bg-white"
+          ? "text-textColor md:hover:bg-bgCard"
+          : "md:hover:border md:hover:border-white  md:hover:bg-white"
       }`}
     >
       <div className="Food-item-margin p-2">
